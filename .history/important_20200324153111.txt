@@ -1,0 +1,31 @@
+/*
+npm init  
+ npm i express bcryptjs jsonwebtoken config express-validator mongoose
+ npm i -D nodemon concurrently
+                     ^ this use to run on the front end 
+
+                     * go to pakage json the on the script change to 
+
+"scripts" :{
+
+"start" : "node index.js"
+"server" :" nodemon index.js"
+}
+ */
+
+
+ how to set your api to githube 
+
+# create folder on the root name is :   .gitagnur
+
+# inside folder set       node_modules/
+
+# in command line 
+
+#  git init 
+
+# git add .
+
+#git commit -m ' express server setup '
+
+# git push 

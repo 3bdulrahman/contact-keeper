@@ -1,0 +1,14 @@
+/*
+npm init  
+ npm i express bcryptjs jsonwebtoken config express-validator mongoose
+ npm i -D nodemon concurrently
+                     ^ this use to run on the front end 
+
+                     * go to pakage json the on the script change to 
+
+"scripts" :{
+
+"start" : "node index.js"
+"server" :" nodemon index.js"
+}
+ */
