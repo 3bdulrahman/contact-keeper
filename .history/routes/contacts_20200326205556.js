@@ -44,9 +44,6 @@ router.put('/:id',auth,async (req,res)=>{
           if(phone) contact.phone = phone 
           if(type) contact.type = type 
           await contact.update()
-          // you can use 
-          //await Contacts.findByIdAndUpdate(req.params.id,{$set:contFiled},{new:true})
-          //create conFiled then saved all the filed into them 
          res.status(200).json({contact})
     } catch (error) {
         
@@ -56,14 +53,8 @@ router.put('/:id',auth,async (req,res)=>{
 // @ Route     DELETE  /api/contacts/:ID
 // @ Desc      delete Contacts
 // @ Access    Private 
-router.delete('/:id',auth,async(req,res)=>{
-    try {
-         let contact = await Contacts.findByIdAndRemove({_id:req.params.id,id:req.user.id})
-         if(!contact) return res.status(400).json({msg:`some of errror :${req.params.id} `})
-         res.status(200).json({msg:`the contact by id :${req.params.id} `})
-    } catch (error) {
-         res.status(500).json({error})
-    }
+router.delete('/:id',(req,res)=>{
+    res.send('delete contact')
 })
 
 

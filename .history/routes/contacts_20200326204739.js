@@ -35,35 +35,16 @@ router.post('/',[auth,[check('name','name is required').not().isEmpty()]],async(
 // @ Access    Private 
 router.put('/:id',auth,async (req,res)=>{
     // defin if there is contact with this id or not ?
-    const {name,email,phone,type} = req.body
     let contact = await Contacts.findOne({user:req.user.id,_id:req.params.id}) 
     if(!contact) return res.status(400).json({msg:'no contact with this id'})
-    try {
-          if(name) contact.name = name 
-          if(email) contact.email = email 
-          if(phone) contact.phone = phone 
-          if(type) contact.type = type 
-          await contact.update()
-          // you can use 
-          //await Contacts.findByIdAndUpdate(req.params.id,{$set:contFiled},{new:true})
-          //create conFiled then saved all the filed into them 
-         res.status(200).json({contact})
-    } catch (error) {
-        
-    } 
+    return res.json({contact})
 })
 
 // @ Route     DELETE  /api/contacts/:ID
 // @ Desc      delete Contacts
 // @ Access    Private 
-router.delete('/:id',auth,async(req,res)=>{
-    try {
-         let contact = await Contacts.findByIdAndRemove({_id:req.params.id,id:req.user.id})
-         if(!contact) return res.status(400).json({msg:`some of errror :${req.params.id} `})
-         res.status(200).json({msg:`the contact by id :${req.params.id} `})
-    } catch (error) {
-         res.status(500).json({error})
-    }
+router.delete('/:id',(req,res)=>{
+    res.send('delete contact')
 })
 
 

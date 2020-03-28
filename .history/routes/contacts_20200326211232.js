@@ -59,7 +59,7 @@ router.put('/:id',auth,async (req,res)=>{
 router.delete('/:id',auth,async(req,res)=>{
     try {
          let contact = await Contacts.findByIdAndRemove({_id:req.params.id,id:req.user.id})
-         if(!contact) return res.status(400).json({msg:`some of errror :${req.params.id} `})
+         if(!contact) res.status(400).json({msg:`some of errror :${req.params.id} `})
          res.status(200).json({msg:`the contact by id :${req.params.id} `})
     } catch (error) {
          res.status(500).json({error})
