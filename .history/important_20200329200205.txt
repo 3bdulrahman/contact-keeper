@@ -29,3 +29,30 @@ npm init
 #git commit -m ' express server setup '
 
 # git push 
+
+
+# AFTER YOU ARE CREATE YOUR API 
+
+#THEN stop server ctrl^c
+
+#then 
+
+#npx create-react-app client 
+in the root file the pakacge.json file add under the server on script 
+
+"client":"npm start --prefix client",
+"clientinstall":"npm install --prefix client",
+"dev":"concurrently \"npm run server\" \"npm run client\""
+
+on the packge.json of the react clinet folder add the proxy object 
+
+"proxy":"http://localhost:500"
+
+
+
+-----
+
+# npm run dev   //this should run the both beckend and fron end react 
+
+
+

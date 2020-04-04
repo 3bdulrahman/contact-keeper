@@ -1,5 +1,6 @@
 const express = require('express')
 const Contacts = require('../modles/Contacts')
+const mongoose = require('mongoose')
 const auth = require('../middleware/auth')
 const { check, validationResult } = require('express-validator');
 const router = express.Router()
@@ -58,7 +59,7 @@ router.put('/:id',auth,async (req,res)=>{
 // @ Access    Private 
 router.delete('/:id',auth,async(req,res)=>{
     try {
-             await Contacts.findByIdAndRemove({_id:req.params.id,id:req.user.id},(err,delObj)=>{
+             await Contacts.findByIdAndRemove({_id:mongoose.Schema.Types.ObjectId(req.params.id),id:req.user.id},(err,delObj)=>{
              if(err) res.status(500).json({msg:err.message})
              if(!delObj) return res.status(400).json({msg:`some of errror :${req.params.id} `});
              res.status(200).json({msg:`the contact by id :${req.params.id} delete success `})

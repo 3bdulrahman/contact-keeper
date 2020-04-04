@@ -58,10 +58,9 @@ router.put('/:id',auth,async (req,res)=>{
 // @ Access    Private 
 router.delete('/:id',auth,async(req,res)=>{
     try {
-             await Contacts.findByIdAndRemove({_id:req.params.id,id:req.user.id},(err,delObj)=>{
-             if(err) res.status(500).json({msg:err.message})
-             if(!delObj) return res.status(400).json({msg:`some of errror :${req.params.id} `});
-             res.status(200).json({msg:`the contact by id :${req.params.id} delete success `})
+         let contact = await Contacts.findByIdAndRemove({_id:req.params.id,id:req.user.id},(err,delObj)=>{
+             if(err) return res.status(400).json({msg:`some of errror :${req.params.id} `});
+             res.status(200).json({msg:`the contact by id :${req.params.id} `})
          })
     } catch (error) {
          res.status(500).json({error})
