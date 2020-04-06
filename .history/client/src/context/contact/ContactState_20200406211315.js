@@ -7,44 +7,24 @@ import contactReducer from '../contact/ContactReducer'
 const ContactState = props=>{
        const contactInit = {
              contacts:[
-                   {id:1,name:"ahmed",email:"xx@gmail.com",phone:"01-223-333",type:"personal"}
-             ],
-             current:null
+                   {id:1,name:"ahmed",email:"xx@gmail.com",phone:"01-223-333",type:"personal"},
+                   {id:2,name:"Sami",email:"sam404@gmail.com",phone:"22-123-122",type:"prof"},
+                   {id:3,name:"Jenas",email:"jenas@outlook.sa",phone:"76-666-222",type:"prof"}
+             ]
        };
        const [state,dispatch] = useReducer(contactReducer,contactInit)
        //add contact 
        const addContact = contact =>{
-            contact.id = uuid()
+            contact.id = uuid.v4()
             dispatch({
                   type:ADD_CONTACT,
                   payload:contact
             })
        }
-       // delete contact 
-       const deleteContact = id =>{
-        dispatch({
-              type:DELETE_CONTACT,
-              payload:id
-        })
-   }
-
-   // set Current 
-     const setCurrent = contact =>{
-           dispatch({
-                type:SET_CURRENT,
-                payload:contact
-           })
-     }
-   // clear current 
-   const clearCurrent =()=> dispatch({ type:CLEAR_CURRENT})
        return(
             <contactContext.Provider value={{
                 contacts:state.contacts,
-                current:state.current,
-                setCurrent,
-                clearCurrent,
-                addContact,
-                deleteContact
+                addContact
             }}>
                 {props.children}
             </contactContext.Provider>

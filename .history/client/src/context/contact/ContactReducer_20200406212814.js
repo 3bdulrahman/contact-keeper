@@ -7,11 +7,7 @@ export default (state,action)=>{
           case ADD_CONTACT:
               return { ...state,contacts:[...state.contacts,action.payload]} 
           case DELETE_CONTACT:
-              return { ...state,contacts:state.contacts.filter(contact=> contact.id!= action.payload)} 
-          case SET_CURRENT:
-              return {...state,current:action.payload} 
-          case CLEAR_CURRENT:
-              return {...state,current:null}
+              return { ...state,contacts:state.contacts.filter(contact=> contact.id!= action.payload)}  
            default:
                return state
       }
