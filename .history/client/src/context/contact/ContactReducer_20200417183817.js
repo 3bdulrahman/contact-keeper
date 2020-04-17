@@ -17,7 +17,7 @@ export default (state,action)=>{
           case FILTER_CONTACTS:
               return { ...state, filtered:state.contacts.filter(contact=>{
                    const regx = new RegExp(`${action.payload}`,'gi')
-                   return contact.name.match(regx)|| contact.email.match(regx)
+                   return contact.name.match(regx)| contact.email.match(regx)
               }) }
          case CLEAR_FILTER:
              return { ...state, filtered:null}

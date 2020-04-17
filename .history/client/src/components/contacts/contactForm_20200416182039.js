@@ -1,8 +1,8 @@
 import React,{useState,useContext,useEffect} from 'react'
+import ContactContext from '../../context/contact/ContactContext'
 import contactContext from '../../context/contact/ContactContext'
  const Contactform = () => {
-    const context = useContext(contactContext)
-    const {addContact,current,updateContact,clearCurrent} = context
+    const {addContact,current,clearCurrent} = useContext(contactContext)
     const [ contact,setContact] = useState({
           name:'' , email:'',phone:'',type:'personal'
     })
@@ -12,19 +12,15 @@ import contactContext from '../../context/contact/ContactContext'
             }else{
             setContact({name:'' , email:'',phone:'',type:'personal'})
             }
-    },[context,current])
+    },[contactContext,current])
     
     const {name,email,phone,type} = contact
     const onChange = e=> setContact({...contact,[e.target.name]:e.target.value})
     const onSubmit = e=>{ 
         e.preventDefault()
         // add method 
-        if(current==null){
-            addContact(contact)
-        }else{
-            updateContact(contact)
-            clearAll()
-        }
+        addContact(contact)
+       
         setContact({name:'' , email:'',phone:'',type:'personal'})
     }
     const clearAll = ()=> clearCurrent()
@@ -49,8 +45,8 @@ import contactContext from '../../context/contact/ContactContext'
                  value='prof' name='type'  onChange={onChange} checked={type==='prof'}/>
                  <input type='submit' value={current?'update contact':'add new contact'} className='btn btn-block btn-primary' />
                  <br />
-                 {current && <div>
-                       <button className="btn btn-block btn-light" onClick={clearAll}>clear current</button>
+                 {current&<div>
+                       <button className="btn btn-block btn-light" onClick={}>clear current</button>
                      </div>}
                 
             </div>

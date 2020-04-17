@@ -1,4 +1,5 @@
 import React,{useState,useContext,useEffect} from 'react'
+import ContactContext from '../../context/contact/ContactContext'
 import contactContext from '../../context/contact/ContactContext'
  const Contactform = () => {
     const context = useContext(contactContext)
@@ -19,7 +20,7 @@ import contactContext from '../../context/contact/ContactContext'
     const onSubmit = e=>{ 
         e.preventDefault()
         // add method 
-        if(current==null){
+        if(current===null){
             addContact(contact)
         }else{
             updateContact(contact)
