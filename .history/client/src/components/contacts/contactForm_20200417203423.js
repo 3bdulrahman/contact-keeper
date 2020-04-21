@@ -48,7 +48,6 @@ import contactContext from '../../context/contact/ContactContext'
                   : prof<input type='radio' 
                  value='prof' name='type'  onChange={onChange} checked={type==='prof'}/>
                  <br />
-                 <br />
                  <input type='submit' value={current?'update contact':'add new contact'} className='btn btn-block btn-primary' />
                  <br />
                  {current && <div>
