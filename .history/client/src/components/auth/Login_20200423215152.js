@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useContext} from 'react'
 import alertContext from '../../context/alert/alertContext'
 import authContext from '../../context/auth/authContext'
-const Login = (props) => {
+const Login = () => {
      const ale = useContext(alertContext)
      const auth = useContext(authContext)
      const {errors,clearErrors,isAuth,login} = auth 

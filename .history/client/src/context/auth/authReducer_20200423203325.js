@@ -1,9 +1,8 @@
-import {REGISTER_FAIL,REGISTER_SUCCESS,LOGOUT, CLEAR_ERRORS, AUTH_ERROR, USER_LOADED, LOGIN_SUCCESS, LOGIN_FAIL} from '../type'
+import {REGISTER_FAIL,REGISTER_SUCCESS, CLEAR_ERRORS, AUTH_ERROR, USER_LOADED} from '../type'
 export default (state,action)=>{
            
        switch (action.type) {
            case REGISTER_SUCCESS:
-           case LOGIN_SUCCESS:
                localStorage.setItem('token',action.payload.token)
                return {
                  ...state,
@@ -20,8 +19,6 @@ export default (state,action)=>{
                 }
             case REGISTER_FAIL:
             case AUTH_ERROR:
-            case LOGIN_FAIL:
-            case LOGOUT:
                 localStorage.removeItem('token')
                 return{
                      ...state,

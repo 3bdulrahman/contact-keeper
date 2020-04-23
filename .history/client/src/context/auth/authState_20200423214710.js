@@ -1,7 +1,7 @@
 import React,{useReducer} from 'react'
 import axios from 'axios'
 import authContext from './authContext'
-import{USER_LOADED,LOGIN_SUCCESS,LOGIN_FAIL,AUTH_ERROR,CLEAR_ERRORS,REGISTER_SUCCESS,REGISTER_FAIL, LOGOUT} from '../type'
+import{USER_LOADED,LOGIN_SUCCESS,LOGIN_FAIL,AUTH_ERROR,CLEAR_ERRORS,REGISTER_SUCCESS,REGISTER_FAIL} from '../type'
 import authReducer from './authReducer'
 import setAuth from './utils/setAuth'
 const AuthState = props=>{
@@ -40,9 +40,8 @@ const AuthState = props=>{
                }
              };
              try {
-                 
                const res = await axios.post('/api/auth',userPayload,config)
-              
+   
                dispatch({
                      type:LOGIN_SUCCESS,
                      payload:res.data
@@ -56,7 +55,6 @@ const AuthState = props=>{
                  })
              }
        }
-       const logout = ()=> dispatch( { type:LOGOUT })
        const register = async usePayload =>{
         const config = {
             headers: {
@@ -72,7 +70,7 @@ const AuthState = props=>{
             })
             loadUser();
           } catch (err) {
-              
+              console.log(err.response)
               dispatch({
                    type:REGISTER_FAIL,
                    payload:err.response.data.msg
@@ -90,8 +88,7 @@ const AuthState = props=>{
                 clearErrors,
                 register,
                 loadUser,
-                login,
-                logout
+                login
             }}>
                 {props.children}
             </authContext.Provider>

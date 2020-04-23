@@ -1,7 +1,7 @@
 import React,{useReducer} from 'react'
 import axios from 'axios'
 import authContext from './authContext'
-import{USER_LOADED,LOGIN_SUCCESS,LOGIN_FAIL,AUTH_ERROR,CLEAR_ERRORS,REGISTER_SUCCESS,REGISTER_FAIL, LOGOUT} from '../type'
+import{USER_LOADED,LOGIN_SUCCESS,LOGIN_FAIL,AUTH_ERROR,CLEAR_ERRORS,REGISTER_SUCCESS,REGISTER_FAIL} from '../type'
 import authReducer from './authReducer'
 import setAuth from './utils/setAuth'
 const AuthState = props=>{
@@ -17,7 +17,7 @@ const AuthState = props=>{
        const [state,dispatch] = useReducer(authReducer,contactInit)
        const loadUser = async ()=>{
            
-          if(localStorage.token){setAuth(localStorage.token)}
+          if(localStorage.token!==undefined){setAuth(localStorage.token)}
 
            try {
                const res = await axios.get('/api/auth')
@@ -33,30 +33,6 @@ const AuthState = props=>{
                console.log('error')
            }
       }
-       const login = async userPayload =>{
-          const config = {
-               headers: {
-                 'Content-Type': 'application/json'
-               }
-             };
-             try {
-                 
-               const res = await axios.post('/api/auth',userPayload,config)
-              
-               dispatch({
-                     type:LOGIN_SUCCESS,
-                     payload:res.data
-               })
-               loadUser();
-             } catch (err) {
-                 
-                 dispatch({
-                      type:LOGIN_FAIL,
-                      payload:err.response.data.msg
-                 })
-             }
-       }
-       const logout = ()=> dispatch( { type:LOGOUT })
        const register = async usePayload =>{
         const config = {
             headers: {
@@ -72,7 +48,7 @@ const AuthState = props=>{
             })
             loadUser();
           } catch (err) {
-              
+              console.log(err.response)
               dispatch({
                    type:REGISTER_FAIL,
                    payload:err.response.data.msg
@@ -89,9 +65,7 @@ const AuthState = props=>{
                 errors:state.errors,
                 clearErrors,
                 register,
-                loadUser,
-                login,
-                logout
+                loadUser
             }}>
                 {props.children}
             </authContext.Provider>

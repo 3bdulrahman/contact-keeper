@@ -5,23 +5,23 @@ import authContext from '../../context/auth/authContext'
 
  const Navbar = ({title}) => {
    const context = useContext(authContext)
-   const { logout , isAuth , user } = context
-   const onClick = ()=> logout()
+   const { logout , isAuth , user }
     return (
       <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+      
       <a className="navbar-brand" href="#">{title}</a>
-
+      
+     
       <ul className="navbar-nav">
-        { isAuth ? (<Fragment>
+        { isAuth ? (<Fregment>
             <li className="nav-item">
-            <a className="nav-link" onClick={onClick} href="#">logout</a>
+            <Link className="nav-link" to="/!#">logout</Link>
           
           </li>
            <li className="nav-item">
-            
-            <a className="nav-link"  href="#">{  user && user.user.name }</a>
+            {  user.name }
          </li>
-         </Fragment> ) :
+         </Fregment> ) :
           (<Fragment>
               <li className="nav-item">
            <Link className="nav-link" to="/"><i className='fa fa-home'></i> Home</Link>

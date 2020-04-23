@@ -12,16 +12,15 @@ import authContext from '../../context/auth/authContext'
       <a className="navbar-brand" href="#">{title}</a>
 
       <ul className="navbar-nav">
-        { isAuth ? (<Fragment>
+        { isAuth ? (<Fregment>
             <li className="nav-item">
-            <a className="nav-link" onClick={onClick} href="#">logout</a>
+            <Link className="nav-link" onClick={onClick} to="/!#">logout</Link>
           
           </li>
            <li className="nav-item">
-            
-            <a className="nav-link"  href="#">{  user && user.user.name }</a>
+            {  user.name }
          </li>
-         </Fragment> ) :
+         </Fregment> ) :
           (<Fragment>
               <li className="nav-item">
            <Link className="nav-link" to="/"><i className='fa fa-home'></i> Home</Link>

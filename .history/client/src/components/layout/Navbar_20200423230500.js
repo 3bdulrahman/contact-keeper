@@ -18,8 +18,7 @@ import authContext from '../../context/auth/authContext'
           
           </li>
            <li className="nav-item">
-            
-            <a className="nav-link"  href="#">{  user && user.user.name }</a>
+            {  user && user.user.name }
          </li>
          </Fragment> ) :
           (<Fragment>

@@ -11,12 +11,10 @@ import AlertState from './context/alert/alertState'
 import Alert from './components/layout/Alert'
 import setAuth from './context/auth/utils/setAuth'
 
-
-import './App.css'
-
 if(localStorage.token){
   setAuth(localStorage.token)
 }
+import './App.css'
 const  App = ()=> {
    return (
      <AuthState>

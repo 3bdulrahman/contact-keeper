@@ -40,9 +40,8 @@ const AuthState = props=>{
                }
              };
              try {
-                 
                const res = await axios.post('/api/auth',userPayload,config)
-              
+   
                dispatch({
                      type:LOGIN_SUCCESS,
                      payload:res.data

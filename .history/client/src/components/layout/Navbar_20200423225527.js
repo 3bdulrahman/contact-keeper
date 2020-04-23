@@ -14,12 +14,11 @@ import authContext from '../../context/auth/authContext'
       <ul className="navbar-nav">
         { isAuth ? (<Fragment>
             <li className="nav-item">
-            <a className="nav-link" onClick={onClick} href="#">logout</a>
+            <a className="nav-link" onClick={onClick} to="/!#">logout</a>
           
           </li>
            <li className="nav-item">
-            
-            <a className="nav-link"  href="#">{  user && user.user.name }</a>
+            {  user.name }
          </li>
          </Fragment> ) :
           (<Fragment>
