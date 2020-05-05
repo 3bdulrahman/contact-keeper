@@ -8,7 +8,7 @@ const AuthState = props=>{
      
        const contactInit = {
              token: localStorage.getItem('token'),
-             isAuth:localStorage.getItem('token')?true:false,
+             isAuth: false,
              user:null,
              loaded:true,
              errors:null

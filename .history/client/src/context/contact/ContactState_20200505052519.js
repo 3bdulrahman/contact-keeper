@@ -21,7 +21,7 @@ const ContactState = props=>{
                         type:GET_CONTACT,
                         payload:res.data
                  })
-                 console.log('ggg'+res)
+                 console.log(res)
             } catch (error) {
                   dispatch({
                         type:ERROR_CONTACT,
@@ -41,7 +41,7 @@ const ContactState = props=>{
                  const res =  await axios.post('/api/contacts',contact,config)
                  dispatch({
                         type:ADD_CONTACT,
-                        payload:res.data.data
+                        payload:res.data
                  })
             } catch (error) {
                   dispatch({

@@ -1,27 +1,9 @@
-import {GET_CONTACT,CLEAR_CONTACT, UPDATE_CONTACT,CLEAR_CURRENT,DELETE_CONTACT,SET_CURRENT,ADD_CONTACT,SET_ALERT,REMOVE_ALERT,
+import {ERROR_CONTACT,GET_CONTACT,CLEAR_CONTACT, UPDATE_CONTACT,CLEAR_CURRENT,DELETE_CONTACT,SET_CURRENT,ADD_CONTACT,SET_ALERT,REMOVE_ALERT,
     FILTER_CONTACTS,CLEAR_FILTER, ERROR_CONTACT} from '../type'
 
 export default (state,action)=>{
       switch(action.type){ 
-          case GET_CONTACT:
-              return {
-                    ...state,
-                    contacts:action.payload
-              }
-          case ERROR_CONTACT:
-              return{
-                   ...state,
-                    error:action.payload
-              }
-          case CLEAR_CONTACT:
-                return{
-                    ...state,
-                    contacts:[],
-              current:null,
-              filtered:null,
-              error:null
-               
-              }
+         
           case ADD_CONTACT:
               return { ...state,contacts:[...state.contacts,action.payload]} 
           case DELETE_CONTACT:

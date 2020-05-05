@@ -13,12 +13,6 @@ import authContext from '../../context/auth/authContext'
 
       <ul className="navbar-nav">
         { isAuth ? (<Fragment>
-          <li className="nav-item">
-           <Link className="nav-link" to="/"><i className='fa fa-home'></i> Home</Link>
-           </li>
-           <li className="nav-item">
-             <Link className="nav-link" to="/about">About</Link>
-           </li>
             <li className="nav-item">
             <a className="nav-link" onClick={onClick} href="#">logout</a>
           
@@ -30,7 +24,12 @@ import authContext from '../../context/auth/authContext'
         
          </Fragment> ) :
           (<Fragment>
-          
+              <li className="nav-item">
+           <Link className="nav-link" to="/"><i className='fa fa-home'></i> Home</Link>
+           </li>
+           <li className="nav-item">
+             <Link className="nav-link" to="/about">About</Link>
+           </li>
            <li className="nav-item">
              <Link className="nav-link" to="/register">Register</Link>
            </li>

@@ -11,8 +11,7 @@ router.get('/',auth,async(req,res)=>{
         try {
              console.log(req.user.id)
             let contacts = await Contacts.find({user:req.user.id})
-            console.log(contacts)
-            res.status(200).json(contacts)
+            res.status(200).json({ contacts })
         } catch (error) {
              res.status(500).json({error:'Server Errors',msg:error.message})
         }

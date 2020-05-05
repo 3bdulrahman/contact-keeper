@@ -9,7 +9,7 @@ import ContactsItem from './contactsItem'
     useEffect(()=>{
         getContact()
     },[])
-    if(contacts!==null && contacts.length ===0){ return <h4>please add a contact</h4>}
+    if(contacts!==null && contacts.length ==0){ return <h4>please add a contact</h4>}
     return (
         <Fragment>
             <TransitionGroup>
@@ -18,7 +18,7 @@ import ContactsItem from './contactsItem'
                     <CSSTransition key={contact.id} timeout={500} classNames='my-node'>
                     <ContactsItem key={contact.id} contact={contact} />
                     </CSSTransition>
-                    ):contacts.map(
+                    ):contacts&&contacts.map(
                         contact=>
                         <CSSTransition key={contact._id} timeout={500} classNames='my-node'>
                          <ContactsItem key={contact._id} contact={contact} />

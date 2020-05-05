@@ -6,7 +6,7 @@ const Login = (props) => {
      const auth = useContext(authContext)
      const {errors,clearErrors,isAuth,login,loadUser} = auth 
      useEffect(()=>{
-         
+          loadUser()
           if(isAuth){
                 props.history.push('/')
           }

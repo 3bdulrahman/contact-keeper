@@ -9,7 +9,7 @@ import ContactsItem from './contactsItem'
     useEffect(()=>{
         getContact()
     },[])
-    if(contacts!==null && contacts.length ===0){ return <h4>please add a contact</h4>}
+    if(contacts!==null && contacts.length ==0){ return <h4>please add a contact</h4>}
     return (
         <Fragment>
             <TransitionGroup>

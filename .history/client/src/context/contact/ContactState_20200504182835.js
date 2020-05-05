@@ -6,42 +6,40 @@ import {GET_CONTACT,CLEAR_CONTACT,ERROR_CONTACT, UPDATE_CONTACT,CLEAR_CURRENT,DE
 import contactReducer from '../contact/ContactReducer'
 const ContactState = props=>{
        const contactInit = {
-             contacts:null,
+             contacts:[],
              current:null,
              filtered:null,
              error:null
        };
        const [state,dispatch] = useReducer(contactReducer,contactInit)
        //get contact 
-       const getContact =async () =>{
-            
+       const getContact =async contact =>{
+            const config = {
+                   headers:{
+                         'Content-Type':'application/json'
+                   }
+            }
             try {
-                 const res =  await axios.get('/api/contacts')
+                 const res =  await axios.post('/api/contacts',contact,config)
                  dispatch({
-                        type:GET_CONTACT,
+                        type:ADD_CONTACT,
                         payload:res.data
                  })
-                 console.log('ggg'+res)
             } catch (error) {
                   dispatch({
                         type:ERROR_CONTACT,
-                        payload:error.response
+                        payload:error.response.msg
                  })
             }
        }
        //add contact 
        const addContact =async contact =>{
-            const config = {
-                  headers:{
-                        'Content-Type':'application/json'
-                  }
-           }
         
             try {
-                 const res =  await axios.post('/api/contacts',contact,config)
+                 const res =  await axios.get('/api/contacts')
                  dispatch({
-                        type:ADD_CONTACT,
-                        payload:res.data.data
+                        type:GET_CONTACT,
+                        payload:res.data
                  })
             } catch (error) {
                   dispatch({

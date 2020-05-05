@@ -6,7 +6,7 @@ import {GET_CONTACT,CLEAR_CONTACT,ERROR_CONTACT, UPDATE_CONTACT,CLEAR_CURRENT,DE
 import contactReducer from '../contact/ContactReducer'
 const ContactState = props=>{
        const contactInit = {
-             contacts:null,
+             contacts:[],
              current:null,
              filtered:null,
              error:null
@@ -21,11 +21,10 @@ const ContactState = props=>{
                         type:GET_CONTACT,
                         payload:res.data
                  })
-                 console.log('ggg'+res)
             } catch (error) {
                   dispatch({
                         type:ERROR_CONTACT,
-                        payload:error.response
+                        payload:error.response.msg
                  })
             }
        }
@@ -41,7 +40,7 @@ const ContactState = props=>{
                  const res =  await axios.post('/api/contacts',contact,config)
                  dispatch({
                         type:ADD_CONTACT,
-                        payload:res.data.data
+                        payload:res.data
                  })
             } catch (error) {
                   dispatch({

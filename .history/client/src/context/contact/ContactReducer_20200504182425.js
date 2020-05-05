@@ -16,7 +16,7 @@ export default (state,action)=>{
           case CLEAR_CONTACT:
                 return{
                     ...state,
-                    contacts:[],
+                    contacts:null,
               current:null,
               filtered:null,
               error:null

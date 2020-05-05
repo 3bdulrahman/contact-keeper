@@ -8,7 +8,7 @@ const AuthState = props=>{
      
        const contactInit = {
              token: localStorage.getItem('token'),
-             isAuth:localStorage.getItem('token')?true:false,
+             isAuth: false,
              user:null,
              loaded:true,
              errors:null
@@ -25,12 +25,12 @@ const AuthState = props=>{
                     type:USER_LOADED,
                     payload:res.data
                })
-             //  console.log('test',res.data)
+               console.log('test',res.data)
            } catch (error) {
                dispatch({
                     type:AUTH_ERROR
                })
-             
+               console.log('error')
            }
       }
        const login = async userPayload =>{
