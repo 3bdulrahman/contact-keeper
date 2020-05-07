@@ -11,9 +11,7 @@ import Snip from '../../context/contact/Snip'
         getContact();
         // eslint-disable-next-line
       }, []);
-      if (contacts !== null && contacts.length === 0 && !loading) {
-        return <h4>Please add a contact</h4>;
-      }
+    if(contacts!==null &&!loading&& contacts.length ===0){ return <h4>please add a contact</h4>}
     return (
         <Fragment>
       {contacts !== null && !loading ? (

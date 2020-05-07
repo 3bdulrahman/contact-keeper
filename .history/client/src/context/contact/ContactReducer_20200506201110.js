@@ -6,8 +6,7 @@ export default (state,action)=>{
           case GET_CONTACT:
               return {
                     ...state,
-                    contacts:action.payload,
-                    loading:false
+                    contacts:action.payload
               }
           case ERROR_CONTACT:
               return{

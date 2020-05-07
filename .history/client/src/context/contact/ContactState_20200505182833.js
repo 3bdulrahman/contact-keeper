@@ -9,8 +9,7 @@ const ContactState = props=>{
              contacts:null,
              current:null,
              filtered:null,
-             error:null,
-             loading:true
+             error:null
        };
        const [state,dispatch] = useReducer(contactReducer,contactInit)
        //get contact 
@@ -55,7 +54,7 @@ const ContactState = props=>{
        const clearContact = ()=> dispatch({ type:CLEAR_CONTACT})
        const deleteContact =async id =>{
          try {
-                await axios.delete(`/api/contacts/${id}`)
+               const res = await axios.delete(`/api/contacts/${id}`)
                dispatch({
                   type:DELETE_CONTACT,
                   payload:id
@@ -83,7 +82,7 @@ const ContactState = props=>{
      }
      try {
       const res = await axios.put(`/api/contacts/${contact._id}`,contact,config)
-      console.log(res.data)
+      console.log('ana : '+res)
       dispatch({
             type:UPDATE_CONTACT,
             payload:res.data
@@ -111,7 +110,6 @@ const ContactState = props=>{
                 current:state.current,
                 error:state.error,
                 filtered:state.filtered,
-                loading:state.loading,
                 contactClearFiltred,
                 contactFilter,
                 setCurrent,

@@ -6,8 +6,7 @@ export default (state,action)=>{
           case GET_CONTACT:
               return {
                     ...state,
-                    contacts:action.payload,
-                    loading:false
+                    contacts:action.payload
               }
           case ERROR_CONTACT:
               return{
@@ -30,7 +29,6 @@ export default (state,action)=>{
           case SET_CURRENT:
               return {...state,current:action.payload} 
           case UPDATE_CONTACT:
-             
               return {...state,contacts:state.contacts.map(contact=> contact._id === action.payload._id ? action.payload:contact  )}
           case CLEAR_CURRENT:
               return {...state,current:null}

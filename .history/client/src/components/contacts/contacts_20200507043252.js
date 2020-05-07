@@ -11,9 +11,7 @@ import Snip from '../../context/contact/Snip'
         getContact();
         // eslint-disable-next-line
       }, []);
-      if (contacts !== null && contacts.length === 0 && !loading) {
-        return <h4>Please add a contact</h4>;
-      }
+    if(contacts!==null &&!loading&& contacts.length ===0){ return <h4>please add a contact</h4>}
     return (
         <Fragment>
       {contacts !== null && !loading ? (
@@ -25,7 +23,7 @@ import Snip from '../../context/contact/Snip'
                   timeout={500}
                   classNames='my-node'
                 >
-                  <ContactsItem contact={contact} />
+                  <ContactItem contact={contact} />
                 </CSSTransition>
               ))
             : contacts.map(contact => (
@@ -34,12 +32,12 @@ import Snip from '../../context/contact/Snip'
                   timeout={500}
                   classNames='my-node'
                 >
-                  <ContactsItem contact={contact} />
+                  <ContactItem contact={contact} />
                 </CSSTransition>
               ))}
         </TransitionGroup>
       ) : (
-        <Snip />
+        <Spin />
       )}
     </Fragment>
     )

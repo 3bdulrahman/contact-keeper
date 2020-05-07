@@ -54,7 +54,7 @@ router.put('/:id',auth,async (req,res)=>{
           // you can use 
           //await Contacts.findByIdAndUpdate(req.params.id,{$set:contFiled},{new:true})
           //create conFiled then saved all the filed into them 
-        
+          console.log(contact)
           res.status(200).json(contact)
     } catch (error) {
         
